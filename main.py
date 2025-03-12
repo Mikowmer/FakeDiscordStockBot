@@ -11,6 +11,11 @@ async def on_ready():
 
 @bot.slash_command(name="hello", description="Say hello to the bot")
 async def hello(ctx: discord.ApplicationContext):
-    await ctx.respond("Hey!")
+    await ctx.respond("Hey!\ntest")
+
+@bot.slash_command(name="plotgraph", description="Plot a graph")
+async def plotgraph(ctx: discord.ApplicationContext):
+    await ctx.send("Plotting graph...")
+    await ctx.send("https://en.wikipedia.org/wiki/File:Trollface.png")
 
 bot.run(os.getenv('TOKEN')) # run the bot with the token
