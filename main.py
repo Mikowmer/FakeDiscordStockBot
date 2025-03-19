@@ -15,7 +15,7 @@ async def hello(ctx: discord.ApplicationContext):
 
 @bot.slash_command(name="plotgraph", description="Plot a graph")
 async def plotgraph(ctx: discord.ApplicationContext):
-    await ctx.send("Plotting graph...")
-    await ctx.send("https://en.wikipedia.org/wiki/File:Trollface.png")
+    await ctx.send_response("Plotting graph...")
+    await ctx.send_followup("https://en.wikipedia.org/wiki/File:Trollface.png")
 
 bot.run(os.getenv('TOKEN')) # run the bot with the token
