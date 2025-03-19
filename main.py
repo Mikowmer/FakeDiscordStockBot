@@ -2,7 +2,9 @@ import discord
 import os # default module
 from dotenv import load_dotenv
 
-load_dotenv() # load all the variables from the env file
+from graphgen import grab_graph
+
+load_dotenv() # load all the variables from the env file (./.env)
 bot = discord.Bot()
 
 @bot.event
@@ -15,7 +17,9 @@ async def hello(ctx: discord.ApplicationContext):
 
 @bot.slash_command(name="plotgraph", description="Plot a graph")
 async def plotgraph(ctx: discord.ApplicationContext):
-    await ctx.send_response("Plotting graph...")
-    await ctx.send_followup("https://en.wikipedia.org/wiki/File:Trollface.png")
+    try:
+        await grab_graph(ctx)
+    except Exception as e:
+        await ctx.respond("ERROR ENCOUNTERED\n{}".format(e))
 
 bot.run(os.getenv('TOKEN')) # run the bot with the token
